@@ -60,13 +60,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='electronics_db'),
-        'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default='password'),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
+        'NAME': 'electronics_network',  # Имя базы данных
+        'USER': 'postgres',             # Пользователь
+        'PASSWORD': '12345',       # Пароль, который вы вспомнили
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -115,3 +117,6 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+LOGIN_REDIRECT_URL = '/api/network-nodes/'
+LOGOUT_REDIRECT_URL = '/api/auth/login/'
