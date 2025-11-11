@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши магазины - ElectroNet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4a5568;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+                        url('https://images.unsplash.com/photo-1563013546-7e5c7b9d9b79?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Stores Section */
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #4a5568;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a5568;
+            font-size: 1.2rem;
+        }
+
+        .stores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .store-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            border: 1px solid #e9ecef;
+            position: relative;
+        }
+
+        .store-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .store-type {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .type-factory {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .type-retail {
+            background: #c6f6d5;
+            color: #276749;
+        }
+
+        .type-entrepreneur {
+            background: #bee3f8;
+            color: #2c5aa0;
+        }
+
+        .store-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .store-card h3 {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #718096;
+        }
+
+        .supplier-info {
+            background: #edf2f7;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .supplier-label {
+            font-weight: bold;
+            color: #4a5568;
+            margin-bottom: 0.3rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Statistics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .stores-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">Electro<span>Net</span></a>
+                <div class="nav-links">
+                    <a href="/">Главная</a>
+                    <a href="/catalog/">Каталог</a>
+                    <a href="/stores/" style="color: #667eea;">Магазины</a>
+                    <a href="/admin/">Админка</a>
+                    <a href="/api/network-nodes/">API</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Наши магазины</h1>
+            <p>Более {{ nodes.count }} точек по всей стране</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Stores Section -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Карта нашей сети</h2>
+                <p>Найдите ближайший к вам магазин</p>
+            </div>
+
+            <div class="map-container">
+                <div class="map-placeholder">
+                    🗺️ Интерактивная карта магазинов
+                    <br>
+                    <small>(здесь будет интеграция с Яндекс.Картами или Google Maps)</small>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">{{ nodes.count }}</div>
+                    <div>Всего точек</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ nodes|length }}</div>
+                    <div>Городов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div>Поддержка</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div>Гарантия</div>
+                </div>
+            </div>
+
+            <div class="stores-grid">
+                {% for node in nodes %}
+                <div class="store-card">
+                    <div class="store-type type-{{ node.node_type }}">
+                        {% if node.node_type == 'factory' %}Завод
+                        {% elif node.node_type == 'retail' %}Розничная сеть
+                        {% else %}Индивидуальный предприниматель{% endif %}
+                    </div>
+
+                    <div class="store-icon">
+                        {% if node.node_type == 'factory' %}🏭
+                        {% elif node.node_type == 'retail' %}🏪
+                        {% else %}👨‍💼{% endif %}
+                    </div>
+
+                    <h3>{{ node.name }}</h3>
+
+                    <div class="contact-info">
+                        <div class="contact-item">📧 {{ node.contact.email }}</div>
+                        <div class="contact-item">📍 {{ node.contact.country }}, {{ node.contact.city }}</div>
+                        <div class="contact-item">🏠 {{ node.contact.street }}, {{ node.contact.house_number }}</div>
+                    </div>
+
+                    {% if node.supplier %}
+                    <div class="supplier-info">
+                        <div class="supplier-label">Поставщик:</div>
+                        <div>{{ node.supplier.name }}</div>
+                    </div>
+                    {% endif %}
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="showRoute('{{ node.contact.city }}')">
+                            📍 Проложить маршрут
+                        </button>
+                        <button class="btn btn-secondary" onclick="callStore('{{ node.name }}')">
+                            📞 Позвонить
+                        </button>
+                    </div>
+                </div>
+                {% empty %}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: #718096;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🏪</div>
+                    <h3>Магазины пока не добавлены</h3>
+                    <p>Добавьте звенья сети через админ-панель</p>
+                    <a href="/admin/" style="color: #667eea; margin-top: 1rem; display: inline-block;">Перейти в админку</a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ElectroNet. Все права защищены.</p>
+            <p>Сеть магазинов электроники</p>
+        </div>
+    </footer>
+
+    <script>
+        function showRoute(city) {
+            alert(`Прокладываем маршрут до ${city} 🗺️\n(В реальном приложении здесь будет интеграция с картами)`);
+        }
+
+        function callStore(storeName) {
+            alert(`Звонок в магазин "${storeName}" 📞\nТел.: +7 (XXX) XXX-XX-XX`);
+        }
+
+        // Простая фильтрация по типу магазина
+        function filterStores(type) {
+            alert(`Фильтрация по типу: ${type}\n(будет реализована в будущем)`);
+        }
+    </script>
+</body>
+</html>

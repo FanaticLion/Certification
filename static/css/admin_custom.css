@@ -1,0 +1,838 @@
+/* static/css/admin_custom.css */
+/* ElectroNet Admin Custom Styles */
+
+/* ===== ЦВЕТОВАЯ ПАЛИТРА ===== */
+:root {
+    --primary-color: #5a67d8;      /* Приглушенный фиолетовый */
+    --secondary-color: #4c51bf;    /* Темнее фиолетовый */
+    --success-color: #38a169;      /* Приглушенный зеленый */
+    --warning-color: #d69e2e;      /* Приглушенный оранжевый */
+    --danger-color: #e53e3e;       /* Приглушенный красный */
+    --dark-color: #2d3748;         /* Темный */
+    --light-color: #f7fafc;        /* Светлый фон */
+    --text-color: #4a5568;         /* Основной текст */
+    --text-light: #718096;         /* Светлый текст */
+    --border-color: #e2e8f0;       /* Цвет границ */
+}
+
+/* ===== ОСНОВНЫЕ СТИЛИ ===== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f8f9fa !important;
+}
+
+/* Хедер админки */
+#header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    color: white !important;
+    border-bottom: none !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+#branding h1 {
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 1.4rem !important;
+}
+
+#branding h1 a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+#branding h1 a:hover {
+    opacity: 0.9 !important;
+}
+
+/* ===== НАВИГАЦИЯ И ХЛЕБНЫЕ КРОШКИ ===== */
+.breadcrumbs {
+    background: var(--light-color) !important;
+    border-radius: 8px !important;
+    margin: 15px 0 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 12px 20px !important;
+    font-size: 0.95rem !important;
+}
+
+.breadcrumbs a {
+    color: var(--primary-color) !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+
+.breadcrumbs a:hover {
+    color: var(--secondary-color) !important;
+    text-decoration: underline !important;
+}
+
+.breadcrumbs a:focus {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+}
+
+/* ===== ФОРМЫ И ПОЛЯ ВВОДА ===== */
+
+/* Лейблы (подсказки) */
+.form-row label {
+    font-weight: 600 !important;
+    color: var(--dark-color) !important;
+    margin-bottom: 8px !important;
+    font-size: 0.95rem !important;
+    display: block !important;
+}
+
+/* Обязательные поля */
+.form-row label.required {
+    color: var(--dark-color) !important;
+    font-weight: 700 !important;
+}
+
+/* ОСНОВНЫЕ СТИЛИ ДЛЯ ПОЛЕЙ ВВОДА */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+textarea {
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    transition: all 0.2s ease !important;
+    background: white !important;
+    color: #2d3748 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+    line-height: 1.4 !important; /* Добавил межстрочный интервал */
+    min-height: 46px !important; /* Минимальная высота */
+}
+
+/* ВЫПАДАЮЩИЕ СПИСКИ - ИСПРАВЛЕНЫ */
+select {
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 16px 18px !important; /* Увеличил отступы */
+    font-size: 1.1rem !important; /* Увеличил размер шрифта */
+    transition: all 0.2s ease !important;
+    background: white !important;
+    color: #2d3748 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+    appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 18px center !important;
+    background-size: 20px !important;
+    padding-right: 55px !important; /* Увеличил отступ для стрелки */
+    min-height: 58px !important; /* Минимальная высота */
+    line-height: 1.2 !important; /* Межстрочный интервал */
+}
+
+/* ОПЦИИ ВЫПАДАЮЩИХ СПИСКОВ - КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ */
+select option {
+    background: white !important;
+    color: #2d3748 !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+/* Для множественного выбора */
+select[multiple] option {
+    padding: 10px 14px !important;
+    margin: 2px 0 !important;
+}
+
+select[multiple] option:checked {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* Специфичные поля Django */
+.vTextField, .vURLField, .vEmailField,
+.vIntegerField, .vDecimalField, .vDateField,
+.vTimeField, .vDateTimeField {
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    background: white !important;
+    color: #2d3748 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    box-sizing: border-box !important;
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    line-height: 1.4 !important; /* Межстрочный интервал */
+    min-height: 46px !important; /* Минимальная высота */
+}
+
+/* Состояние фокуса */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.1) !important;
+    outline: none !important;
+    background: white !important;
+    color: #2d3748 !important;
+}
+
+/* Текстовые области */
+textarea {
+    min-height: 100px !important; /* Увеличил минимальную высоту */
+    resize: vertical !important;
+    font-family: inherit !important;
+    line-height: 1.5 !important; /* Улучшил читаемость */
+}
+
+/* Поля с датами */
+input[type="date"] {
+    color: #2d3748 !important;
+    background: white !important;
+    padding: 11px 14px !important; /* Специальные отступы для date */
+    min-height: 46px !important;
+}
+
+/* Чекбоксы и радио-кнопки */
+input[type="checkbox"],
+input[type="radio"] {
+    width: auto !important;
+    margin-right: 8px !important;
+    transform: scale(1.2) !important; /* Увеличил размер */
+    margin-top: 2px !important;
+}
+
+/* Помощь под полями */
+.help {
+    color: var(--text-light) !important;
+    font-size: 0.85rem !important;
+    margin-top: 8px !important; /* Увеличил отступ */
+    line-height: 1.4 !important;
+}
+
+/* Строки форм */
+.form-row {
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 24px 0 !important; /* Увеличил отступы */
+    margin: 0 !important;
+    background: white !important;
+}
+
+.form-row:last-child {
+    border-bottom: none !important;
+}
+
+/* Выравнивание полей в формах */
+.form-row div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important; /* Увеличил расстояние между элементами */
+}
+
+/* ===== КНОПКИ ===== */
+
+/* Основные кнопки */
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-radius: 6px !important;
+    border: none !important;
+    padding: 12px 24px !important; /* Увеличил отступы */
+    font-weight: 600 !important;
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    color: white !important;
+    width: auto !important;
+    max-width: none !important;
+    min-height: 46px !important; /* Минимальная высота */
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+.button:active {
+    transform: translateY(0) !important;
+}
+
+/* Кнопка "Добавить" */
+.addlink {
+    background: var(--success-color) !important;
+    color: white !important;
+    border-radius: 6px !important;
+    padding: 10px 18px !important; /* Увеличил отступы */
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    width: auto !important;
+    min-height: 40px !important; /* Минимальная высота */
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+.addlink:hover {
+    background: #2f855a !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ===== ТАБЛИЦЫ И СПИСКИ ===== */
+
+/* Восстанавливаем горизонтальный скролл */
+#changelist .results {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    margin-bottom: 20px !important;
+}
+
+#changelist table {
+    min-width: 100% !important;
+    width: auto !important;
+    border-collapse: collapse !important;
+}
+
+/* Заголовки таблиц */
+#changelist table thead th {
+    background: var(--dark-color) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 16px 18px !important; /* Увеличил отступы */
+    border: none !important;
+    white-space: nowrap !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+    font-size: 0.95rem !important; /* Размер шрифта */
+}
+
+/* Ячейки таблиц */
+#changelist table tbody td {
+    padding: 14px 18px !important; /* Увеличил отступы */
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+    vertical-align: top !important;
+    font-size: 0.95rem !important; /* Размер шрифта */
+    line-height: 1.5 !important; /* Межстрочный интервал */
+}
+
+#changelist table tbody tr:hover {
+    background: #f8fafc !important;
+}
+
+/* Четные строки */
+#changelist table tbody tr:nth-child(even) {
+    background: #fafbfc !important;
+}
+
+#changelist table tbody tr:nth-child(even):hover {
+    background: #f1f5f9 !important;
+}
+
+/* ===== КАРТОЧКИ И МОДУЛИ ===== */
+
+.module {
+    border-radius: 10px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    border: none !important;
+    margin-bottom: 20px !important;
+    overflow: hidden !important;
+    background: white !important;
+}
+
+.module h2 {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    color: white !important;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 18px 22px !important; /* Увеличил отступы */
+    font-weight: 600 !important;
+    font-size: 1.2rem !important; /* Увеличил размер шрифта */
+    margin: 0 !important;
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+/* ===== ИСПРАВЛЕНИЯ ДЛЯ ВЫПАДАЮЩИХ СПИСКОВ ===== */
+
+/* ForeignKey и ManyToMany поля */
+.related-widget-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important; /* Увеличил расстояние */
+}
+
+.related-widget-wrapper select {
+    flex: 1 !important;
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+.related-widget-wrapper .add-another,
+.related-widget-wrapper .change-related,
+.related-widget-wrapper .delete-related {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 10px 14px !important; /* Увеличил отступы */
+    text-decoration: none !important;
+    font-size: 0.9rem !important; /* Увеличил размер шрифта */
+    transition: all 0.2s ease !important;
+    min-height: 40px !important; /* Минимальная высота */
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+.related-widget-wrapper .add-another:hover,
+.related-widget-wrapper .change-related:hover,
+.related-widget-wrapper .delete-related:hover {
+    background: var(--secondary-color) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Select2 кастомизация (если используется) */
+.select2-container--default .select2-selection--single {
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    height: auto !important;
+    padding: 11px 14px !important; /* Увеличил отступы */
+    background: white !important;
+    min-height: 46px !important; /* Минимальная высота */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #2d3748 !important;
+    line-height: 1.5 !important; /* Улучшил межстрочный интервал */
+    padding: 0 !important;
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100% !important;
+    right: 10px !important; /* Увеличил отступ */
+}
+
+/* ===== ИКОНКИ ДЕЙСТВИЙ ===== */
+
+/* Ссылки действий */
+.viewlink, .changelink, .deletelink {
+    display: inline-block !important;
+    padding: 8px 14px !important; /* Увеличил отступы */
+    border-radius: 4px !important;
+    margin: 2px !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important; /* Увеличил размер шрифта */
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid transparent !important;
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+.viewlink {
+    background: #f0fff4 !important;
+    color: var(--success-color) !important;
+    border-color: #c6f6d5 !important;
+}
+
+.viewlink:hover {
+    background: var(--success-color) !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+}
+
+.changelink {
+    background: #fffaf0 !important;
+    color: var(--warning-color) !important;
+    border-color: #feebc8 !important;
+}
+
+.changelink:hover {
+    background: var(--warning-color) !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+}
+
+.deletelink {
+    background: #fff5f5 !important;
+    color: var(--danger-color) !important;
+    border-color: #fed7d7 !important;
+    border-radius: 4px !important;
+    padding: 8px 14px !important; /* Увеличил отступы */
+}
+
+.deletelink:hover {
+    background: var(--danger-color) !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ===== БЭДЖИ И СТАТУСЫ ===== */
+
+/* Бэджи для типов звеньев */
+.badge-factory {
+    background: #fff5f5 !important;
+    color: var(--danger-color) !important;
+    padding: 6px 12px !important; /* Увеличил отступы */
+    border-radius: 12px !important;
+    font-size: 0.85rem !important; /* Увеличил размер шрифта */
+    font-weight: 600 !important;
+    border: 1px solid #fed7d7 !important;
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+.badge-retail {
+    background: #f0fff4 !important;
+    color: var(--success-color) !important;
+    padding: 6px 12px !important; /* Увеличил отступы */
+    border-radius: 12px !important;
+    font-size: 0.85rem !important; /* Увеличил размер шрифта */
+    font-weight: 600 !important;
+    border: 1px solid #c6f6d5 !important;
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+.badge-entrepreneur {
+    background: #f0f4ff !important;
+    color: var(--primary-color) !important;
+    padding: 6px 12px !important; /* Увеличил отступы */
+    border-radius: 12px !important;
+    font-size: 0.85rem !important; /* Увеличил размер шрифта */
+    font-weight: 600 !important;
+    border: 1px solid #c3dafe !important;
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+/* ===== САЙДБАР И ФИЛЬТРЫ ===== */
+
+#nav-sidebar {
+    background: var(--light-color) !important;
+    border-right: 1px solid var(--border-color) !important;
+}
+
+#nav-sidebar .module th {
+    background: var(--dark-color) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 14px 16px !important; /* Увеличил отступы */
+    font-size: 0.95rem !important; /* Размер шрифта */
+}
+
+#nav-sidebar .module th a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Фильтры */
+#changelist-filter {
+    background: var(--light-color) !important;
+    border-radius: 8px !important;
+    padding: 18px !important; /* Увеличил отступы */
+    border: 1px solid var(--border-color) !important;
+}
+
+#changelist-filter h2 {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    color: white !important;
+    border-radius: 6px !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    font-weight: 600 !important;
+    margin-bottom: 14px !important; /* Увеличил отступ */
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+/* ===== СООБЩЕНИЯ И УВЕДОМЛЕНИЯ ===== */
+
+.messagelist li {
+    border-radius: 6px !important;
+    margin-bottom: 12px !important; /* Увеличил отступ */
+    padding: 14px 18px !important; /* Увеличил отступы */
+    font-weight: 500 !important;
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    line-height: 1.5 !important; /* Межстрочный интервал */
+}
+
+.messagelist li.success {
+    background: #f0fff4 !important;
+    color: var(--success-color) !important;
+    border: 1px solid #c6f6d5 !important;
+}
+
+.messagelist li.warning {
+    background: #fffaf0 !important;
+    color: var(--warning-color) !important;
+    border: 1px solid #feebc8 !important;
+}
+
+.messagelist li.error {
+    background: #fff5f5 !important;
+    color: var(--danger-color) !important;
+    border: 1px solid #fed7d7 !important;
+}
+
+/* ===== ПАГИНАЦИЯ ===== */
+
+.paginator {
+    background: var(--light-color) !important;
+    border-radius: 8px !important;
+    padding: 18px !important; /* Увеличил отступы */
+    margin-top: 20px !important;
+    border: 1px solid var(--border-color) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important; /* Увеличил расстояние */
+}
+
+.paginator a:link,
+.paginator a:visited {
+    background: white !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 4px !important;
+    padding: 8px 14px !important; /* Увеличил отступы */
+    margin: 0 2px !important;
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    font-size: 0.95rem !important; /* Размер шрифта */
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+.paginator a:hover {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+    transform: translateY(-1px) !important;
+}
+
+.paginator .this-page {
+    font-weight: 600 !important;
+    color: var(--primary-color) !important;
+    background: #f0f4ff !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+/* ===== ОБЩИЕ УЛУЧШЕНИЯ ===== */
+
+/* Улучшаем читаемость текста */
+body, td, th {
+    color: var(--text-color) !important;
+    line-height: 1.6 !important; /* Улучшил межстрочный интервал */
+}
+
+/* Улучшаем контрастность ссылок */
+a:link, a:visited {
+    color: var(--primary-color) !important;
+}
+
+a:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* Улучшаем отступы */
+#content {
+    padding: 24px 32px !important; /* Увеличил отступы */
+}
+
+/* Улучшаем поиск */
+#searchbar {
+    max-width: 320px !important; /* Увеличил ширину */
+    margin-bottom: 18px !important; /* Увеличил отступ */
+}
+
+#searchbar input[type="text"] {
+    width: 100% !important;
+    background: white !important;
+    color: #2d3748 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    min-height: 46px !important; /* Минимальная высота */
+}
+
+/* ===== ДОПОЛНИТЕЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ФОРМ ===== */
+
+/* Гарантируем белый фон для всех форм */
+.module form {
+    background: white !important;
+}
+
+/* Плейсхолдеры */
+::placeholder {
+    color: #a0aec0 !important;
+    opacity: 1 !important;
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+}
+
+/* ManyToMany и ForeignKey поля */
+.selector {
+    background: white !important;
+}
+
+.selector select {
+    background: white !important;
+    color: #2d3748 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    min-height: 46px !important; /* Минимальная высота */
+}
+
+/* Поля с автодополнением */
+.select2-container--default .select2-selection--single {
+    background: white !important;
+    color: #2d3748 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+}
+
+/* Поля DateTime */
+.datetime input {
+    background: white !important;
+    color: #2d3748 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    padding: 11px 14px !important; /* Увеличил отступы */
+    min-height: 46px !important; /* Минимальная высота */
+}
+
+/* Фильтры в сайдбаре */
+#changelist-filter input[type="text"],
+#changelist-filter select {
+    background: white !important;
+    color: #2d3748 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    min-height: 46px !important; /* Минимальная высота */
+}
+
+/* Поля с ошибками */
+.errorlist li {
+    background: #fed7d7 !important;
+    color: #c53030 !important;
+    border: 1px solid #feb2b2 !important;
+    border-radius: 4px !important;
+    padding: 10px 14px !important; /* Увеличил отступы */
+    margin-top: 8px !important; /* Увеличил отступ */
+    font-size: 0.95rem !important; /* Размер шрифта */
+    line-height: 1.4 !important; /* Межстрочный интервал */
+}
+
+/* Поля readonly */
+.readonly {
+    background: #f7fafc !important;
+    color: #4a5568 !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    border-radius: 6px !important;
+    display: inline-block !important;
+    border: 1px solid #e2e8f0 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    box-sizing: border-box !important;
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    line-height: 1.5 !important; /* Межстрочный интервал */
+    min-height: 46px !important; /* Минимальная высота */
+}
+
+/* ===== КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ ДЛЯ ВЫПАДАЮЩИХ СПИСКОВ ===== */
+
+/* Убираем все стили, которые могут мешать отображению текста */
+select,
+select:focus,
+select:hover {
+    color: #2d3748 !important;
+    background-color: white !important;
+}
+
+/* ОПЦИИ ВЫПАДАЮЩИХ СПИСКОВ - САМОЕ ВАЖНОЕ ИСПРАВЛЕНИЕ */
+select option {
+    color: #2d3748 !important;
+    background-color: white !important;
+    padding: 12px 14px !important; /* Увеличил отступы */
+    font-size: 1rem !important; /* Увеличил размер шрифта */
+    line-height: 1.5 !important; /* Межстрочный интервал */
+}
+
+/* При открытии выпадающего списка */
+select:focus option,
+select option:checked,
+select option:hover {
+    background-color: #5a67d8 !important;
+    color: white !important;
+}
+
+/* Для множественного выбора */
+select[multiple] option:checked {
+    background-color: #5a67d8 !important;
+    color: white !important;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+@media (max-width: 768px) {
+    #content {
+        padding: 18px !important; /* Увеличил отступы */
+    }
+
+    .module {
+        border-radius: 6px !important;
+        margin-bottom: 18px !important; /* Увеличил отступ */
+    }
+
+    .breadcrumbs {
+        padding: 12px 16px !important; /* Увеличил отступы */
+        margin: 12px 0 !important; /* Увеличил отступ */
+    }
+
+    .button,
+    input[type="submit"],
+    input[type="button"] {
+        padding: 10px 18px !important; /* Увеличил отступы */
+        font-size: 0.95rem !important;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"],
+    input[type="number"],
+    textarea,
+    select {
+        max-width: 100% !important;
+    }
+}
+
+/* Полоса прокрутки для таблиц */
+#changelist .results::-webkit-scrollbar {
+    height: 8px;
+}
+
+#changelist .results::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#changelist .results::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+#changelist .results::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
